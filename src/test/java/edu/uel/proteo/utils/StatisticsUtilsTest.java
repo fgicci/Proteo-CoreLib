@@ -2,7 +2,7 @@ package edu.uel.proteo.utils;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class StatisticsUtilsTest {
 
@@ -17,7 +17,7 @@ public class StatisticsUtilsTest {
 		int expect = 11;
 		double[] a = { 5.0, 10.0 };
 		double[] b = { 10.0, 20.0 };
-		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b), 0);
+		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b));
 	}
 	
 	@Test
@@ -25,7 +25,7 @@ public class StatisticsUtilsTest {
 		int expect = 11;
 		double[] a = { 5.0, 10.0 };
 		double[] b = { 10.0, 20.0, 30.0 };
-		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b), 0);
+		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b));
 	}
 	
 	@Test
@@ -33,6 +33,6 @@ public class StatisticsUtilsTest {
 		int expect = 11;
 		double[] a = { 5.0, 10.0, 20.0 };
 		double[] b = { 10.0, 20.0 };
-		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b), 0);
+		assertEquals(expect, (int) StatisticsUtils.euclidianDistance(a, b));
 	}
 }
