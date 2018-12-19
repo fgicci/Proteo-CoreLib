@@ -3,12 +3,24 @@ package edu.uel.proteo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Protocol {
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "protocol")
+public class Protocol extends Record {
 
 	private String name;
 	private String description;
+	
+	@Enumerated(EnumType.STRING)
 	private ProtocolType type;
+	
+	@Enumerated(EnumType.STRING)
 	private Sport sport;
+	
 	private List<Character> characters;
 	
 	public Protocol() {
