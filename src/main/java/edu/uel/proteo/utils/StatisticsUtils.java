@@ -2,6 +2,16 @@ package edu.uel.proteo.utils;
 
 public class StatisticsUtils {
 
+	public static double mean(double[] values) {
+		double totalAmount = 0;
+		if (values == null || values.length == 0) return totalAmount;
+		int numOfElements = values.length;
+		for (int i = 0; i < numOfElements; i++) {
+			totalAmount += values[i];
+		}
+		return totalAmount / numOfElements;
+	}
+	
 	private static double distance(double a, double b) {
 		return Math.pow((a - b), 2);
 	}

@@ -2,15 +2,24 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
-public class Athlete {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "athlete")
+public class Athlete extends Record {
+
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
+	
+	@Column(name = "birth_date")
 	private Date birth;
 	
-	public Athlete() {
-		
-	}
+	public Athlete() {}
 	
 	public Athlete(String firstName, String lastName, Date birth) {
 		this.firstName = firstName;
