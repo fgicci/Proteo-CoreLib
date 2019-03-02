@@ -1,8 +1,5 @@
 package edu.uel.proteo.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -21,19 +18,14 @@ public class Protocol extends Record {
 	@Enumerated(EnumType.STRING)
 	private Sport sport;
 	
-	private List<Character> characters;
-	
-	public Protocol() {
-		this.characters = new ArrayList<Character>();
-	}
+	public Protocol() {}
 
-	public Protocol(String name, String description, ProtocolType type, Sport sport, List<Character> characters) {
+	public Protocol(String name, String description, ProtocolType type, Sport sport) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.type = type;
 		this.sport = sport;
-		this.characters = characters;
 	}
 
 	public String getName() {
@@ -66,13 +58,5 @@ public class Protocol extends Record {
 
 	public void setSport(Sport sport) {
 		this.sport = sport;
-	}
-
-	public List<Character> getCharacters() {
-		return characters;
-	}
-
-	public void setCharacters(List<Character> characters) {
-		this.characters = characters;
 	}
 }

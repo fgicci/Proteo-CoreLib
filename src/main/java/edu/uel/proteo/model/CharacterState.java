@@ -1,8 +1,12 @@
 package edu.uel.proteo.model;
 
-public class CharacterState {
+import javax.persistence.ManyToOne;
 
+public class CharacterState extends Record {
+
+	@ManyToOne(optional = false)
 	private Character character;
+	
 	private String name;
 	private String description;
 	private Double value;
