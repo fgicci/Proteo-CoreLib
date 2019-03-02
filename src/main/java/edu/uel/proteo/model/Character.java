@@ -1,33 +1,26 @@
 package edu.uel.proteo.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "character")
-public class Character {
+public class Character extends Record {
 
 	private String name;
 	private String description;
 	private Double minimum;
 	private Double maximum;
 	private Double optimum;
-	private List<Sport> sports;
 	
-	public Character() {
-		this.sports = new ArrayList<Sport>();
-	}
+	public Character() {}
 
-	public Character(String name, String description, Double minimum, Double maximum, Double optimum, List<Sport> sports) {
+	public Character(String name, String description, Double minimum, Double maximum, Double optimum) {
 		this.name = name;
 		this.description = description;
 		this.minimum = minimum;
 		this.maximum = maximum;
 		this.optimum = optimum;
-		this.sports = sports;
 	}
 
 	public String getName() {
@@ -68,13 +61,5 @@ public class Character {
 
 	public void setOptimum(Double optimum) {
 		this.optimum = optimum;
-	}
-
-	public List<Sport> getSports() {
-		return sports;
-	}
-
-	public void setSports(List<Sport> sports) {
-		this.sports = sports;
 	}
 }
