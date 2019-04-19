@@ -2,32 +2,14 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-@Entity
-@Table(name = "activity")
 public class Activity extends Record {
 
-	@Column(name = "issue_date")
-	@Temporal(TemporalType.TIMESTAMP)
 	private Date issueDate;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "athlete_id", nullable = false, updatable = false)
 	private Athlete athlete;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "protocol_id", nullable = false, updatable = false)
 	private Protocol protocol;
 	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "character_id", nullable = false, updatable = false)
 	private Character character;
 	
 	private Double value;

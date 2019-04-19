@@ -1,10 +1,5 @@
 package edu.uel.proteo.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "character")
 public class Character extends Record {
 
 	private String name;
