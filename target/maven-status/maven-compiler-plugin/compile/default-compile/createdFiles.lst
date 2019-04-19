@@ -5,10 +5,15 @@ edu/uel/proteo/model/Sport.class
 edu/uel/proteo/services/SportServiceImpl.class
 edu/uel/proteo/model/Record.class
 edu/uel/proteo/services/StdEnumService.class
+edu/uel/proteo/services/AthleteService.class
 edu/uel/proteo/services/SportService.class
 edu/uel/proteo/controller/SportController.class
 edu/uel/proteo/model/Character.class
+edu/uel/proteo/services/StdDocumentService.class
 edu/uel/proteo/utils/StatisticsUtils.class
+edu/uel/proteo/repository/AthleteRepository.class
 edu/uel/proteo/model/Athlete.class
 edu/uel/proteo/model/Protocol.class
+edu/uel/proteo/controller/AthleteController.class
+edu/uel/proteo/services/AthleteServiceImpl.class
 edu/uel/proteo/model/Activity.class
