@@ -2,14 +2,25 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
+@Document(collection = "activity")
+@TypeAlias("activity")
 public class Activity extends Record {
 
+	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date issueDate;
 	
+	@DBRef
 	private Athlete athlete;
 	
+	@DBRef
 	private Protocol protocol;
 	
+	@DBRef
 	private Character character;
 	
 	private Double value;

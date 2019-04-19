@@ -2,14 +2,16 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.format.annotation.DateTimeFormat;
 
-@Document(collection = "Athlete")
+@Document(collection = "athlete")
+@TypeAlias("athlete")
 public class Athlete extends Record {
 
 	private String firstName;
-	
 	private String lastName;
 	
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
@@ -17,6 +19,7 @@ public class Athlete extends Record {
 	
 	public Athlete() {}
 	
+	@PersistenceConstructor
 	public Athlete(String firstName, String lastName, Date birth) {
 		this.firstName = firstName;
 		this.lastName = lastName;

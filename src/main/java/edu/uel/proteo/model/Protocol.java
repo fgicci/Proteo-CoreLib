@@ -1,22 +1,37 @@
 package edu.uel.proteo.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "protocol")
+@TypeAlias("protocol")
 public class Protocol extends Record {
 
 	private String name;
 	private String description;
-	
 	private ProtocolType type;
-	
 	private Sport sport;
 	
-	public Protocol() {}
+	@DBRef
+	private List<Character> characters;
+	
+	public Protocol() {
+		this.characters = new ArrayList<Character>();
+	}
 
-	public Protocol(String name, String description, ProtocolType type, Sport sport) {
+	@PersistenceConstructor
+	public Protocol(String name, String description, ProtocolType type, Sport sport, List<Character> characters) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.type = type;
 		this.sport = sport;
+		this.characters = characters;
 	}
 
 	public String getName() {
@@ -49,5 +64,13 @@ public class Protocol extends Record {
 
 	public void setSport(Sport sport) {
 		this.sport = sport;
+	}
+
+	public List<Character> getCharacters() {
+		return characters;
+	}
+
+	public void setCharacters(List<Character> characters) {
+		this.characters = characters;
 	}
 }

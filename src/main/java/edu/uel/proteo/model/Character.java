@@ -1,5 +1,14 @@
 package edu.uel.proteo.model;
 
+import java.util.List;
+
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document(collection = "character")
+@TypeAlias("character")
 public class Character extends Record {
 
 	private String name;
@@ -7,15 +16,18 @@ public class Character extends Record {
 	private Double minimum;
 	private Double maximum;
 	private Double optimum;
-	
-	public Character() {}
 
-	public Character(String name, String description, Double minimum, Double maximum, Double optimum) {
+	@Field("character_states")
+	private List<CharacterState> states;
+	
+	@PersistenceConstructor
+	public Character(String name, String description, Double minimum, Double maximum, Double optimum, List<CharacterState> states) {
 		this.name = name;
 		this.description = description;
 		this.minimum = minimum;
 		this.maximum = maximum;
 		this.optimum = optimum;
+		this.states = states;
 	}
 
 	public String getName() {
@@ -56,5 +68,13 @@ public class Character extends Record {
 
 	public void setOptimum(Double optimum) {
 		this.optimum = optimum;
+	}
+
+	public List<CharacterState> getStates() {
+		return states;
+	}
+
+	public void setStates(List<CharacterState> states) {
+		this.states = states;
 	}
 }
