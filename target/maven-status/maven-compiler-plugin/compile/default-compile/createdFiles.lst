@@ -1,3 +1,4 @@
+edu/uel/proteo/config/JsonDateFormatConfig.class
 edu/uel/proteo/ServiceApplication.class
 edu/uel/proteo/model/CharacterState.class
 edu/uel/proteo/model/Sport.class
@@ -22,5 +23,6 @@ edu/uel/proteo/services/CharacterServiceImpl.class
 edu/uel/proteo/converter/StringToEnumFactory.class
 edu/uel/proteo/utils/StatisticsUtils.class
 edu/uel/proteo/repository/CharacterRepository.class
+edu/uel/proteo/config/JsonDateFormatConfig$1.class
 edu/uel/proteo/model/Protocol.class
 edu/uel/proteo/controller/AthleteController.class

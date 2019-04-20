@@ -13,6 +13,7 @@
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/model/Character.java
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/converter/StringToEnumFactory.java
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/utils/StatisticsUtils.java
+/Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/config/JsonDateFormatConfig.java
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/services/SportServiceImpl.java
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/model/Protocol.java
 /Users/fergicci/Develop/projects/java/Proteo-CoreLib/src/main/java/edu/uel/proteo/model/Record.java
