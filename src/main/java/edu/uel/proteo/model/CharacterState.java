@@ -1,20 +1,46 @@
 package edu.uel.proteo.model;
 
-import org.springframework.data.annotation.TypeAlias;
+import java.util.List;
 
-@TypeAlias("character_states")
-public class CharacterState {
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "character_states")
+public class CharacterState extends Record {
+
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "character_id")
+	private Character character;
+	
 	private String name;
 	private String description;
 	private Double value;
 	
+	@ManyToMany(mappedBy = "states")
+	@JsonIgnore
+	List<Character> characters;
+	
 	public CharacterState() {}
 	
-	public CharacterState(String name, String description, Double value) {
+	public CharacterState(Character character, String name, String description, Double value) {
+		this.character = character;
 		this.name = name;
 		this.description = description;
 		this.value = value;
+	}
+
+	public Character getCharacter() {
+		return character;
+	}
+
+	public void setCharacter(Character character) {
+		this.character = character;
 	}
 
 	public String getName() {

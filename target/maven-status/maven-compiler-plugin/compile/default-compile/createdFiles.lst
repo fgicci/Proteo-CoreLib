@@ -17,6 +17,7 @@ edu/uel/proteo/model/ProtocolType.class
 edu/uel/proteo/services/SportServiceImpl.class
 edu/uel/proteo/controller/CharacterController.class
 edu/uel/proteo/services/SportService.class
+edu/uel/proteo/repository/CharacterStateRepository.class
 edu/uel/proteo/services/CharacterServiceImpl.class
 edu/uel/proteo/converter/StringToEnumFactory.class
 edu/uel/proteo/utils/StatisticsUtils.class

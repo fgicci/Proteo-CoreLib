@@ -4,8 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
-import edu.uel.proteo.model.Character;
+import edu.uel.proteo.model.CharacterState;
 
 @Repository
-public interface CharacterRepository
-	extends JpaRepository<Character, Long>, JpaSpecificationExecutor<Character> {}
+public interface CharacterStateRepository 
+	extends JpaRepository<CharacterState, Long>, JpaSpecificationExecutor<CharacterState> {}

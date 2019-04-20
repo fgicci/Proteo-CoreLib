@@ -2,13 +2,16 @@ package edu.uel.proteo.model;
 
 import java.util.List;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-@Document(collection = "character")
-@TypeAlias("character")
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "character")
 public class Character extends Record {
 
 	private String name;
@@ -16,12 +19,19 @@ public class Character extends Record {
 	private Double minimum;
 	private Double maximum;
 	private Double optimum;
-
-	@Field("character_states")
+	
+	@ManyToMany(mappedBy = "characters")
+	@JsonIgnore
+	private List<Protocol> protocols;
+	
+	@ManyToMany
+	@JoinTable(name = "character_character_states",
+		joinColumns = @JoinColumn(name = "character_id"),
+		inverseJoinColumns = @JoinColumn(name = "character_state_id"))
 	private List<CharacterState> states;
 	
-	@PersistenceConstructor
 	public Character(String name, String description, Double minimum, Double maximum, Double optimum, List<CharacterState> states) {
+		super();
 		this.name = name;
 		this.description = description;
 		this.minimum = minimum;

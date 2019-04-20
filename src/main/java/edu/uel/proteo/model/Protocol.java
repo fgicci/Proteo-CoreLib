@@ -3,28 +3,37 @@ package edu.uel.proteo.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.mapping.DBRef;
-import org.springframework.data.mongodb.core.mapping.Document;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
-@Document(collection = "protocol")
-@TypeAlias("protocol")
+@Entity
+@Table(name = "protocol")
 public class Protocol extends Record {
 
 	private String name;
 	private String description;
+	
+	@Enumerated(EnumType.STRING)
 	private ProtocolType type;
+	
+	@Enumerated(EnumType.STRING)
 	private Sport sport;
 	
-	@DBRef
+	@ManyToMany
+	@JoinTable(name = "protocol_character",
+		joinColumns = @JoinColumn(name = "protocol_id"),
+		inverseJoinColumns = @JoinColumn(name = "character_id"))
 	private List<Character> characters;
 	
 	public Protocol() {
 		this.characters = new ArrayList<Character>();
 	}
 
-	@PersistenceConstructor
 	public Protocol(String name, String description, ProtocolType type, Sport sport, List<Character> characters) {
 		super();
 		this.name = name;

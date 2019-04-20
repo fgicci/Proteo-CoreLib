@@ -2,24 +2,29 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.annotation.TypeAlias;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
-@Document(collection = "athlete")
-@TypeAlias("athlete")
+@Entity
+@Table(name = "athlete")
 public class Athlete extends Record {
 
+	@Column(name = "first_name")
 	private String firstName;
+	
+	@Column(name = "last_name")
 	private String lastName;
 	
-	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
+	
+//	@Column(name = "birth")
+//	@Temporal(TemporalType.TIMESTAMP)
+	@Transient
 	private Date birth;
 	
 	public Athlete() {}
 	
-	@PersistenceConstructor
 	public Athlete(String firstName, String lastName, Date birth) {
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -48,5 +53,11 @@ public class Athlete extends Record {
 
 	public void setBirth(Date birth) {
 		this.birth = birth;
+	}
+
+	@Override
+	public String toString() {
+		return "Athlete [firstName=" + firstName + ", lastName=" + lastName + ", birth=" + birth + ", key="
+				+ super.toString() + "]";
 	}
 }
