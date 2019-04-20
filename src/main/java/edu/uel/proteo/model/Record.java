@@ -10,6 +10,8 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 @MappedSuperclass
 public abstract class Record {
@@ -21,9 +23,11 @@ public abstract class Record {
 	@Version
 	private Long version;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createDate;
 	
+	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updateDate;
 	
