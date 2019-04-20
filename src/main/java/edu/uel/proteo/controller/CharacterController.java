@@ -8,38 +8,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.uel.proteo.model.Athlete;
-import edu.uel.proteo.services.AthleteService;
+import edu.uel.proteo.model.Character;
+import edu.uel.proteo.services.CharacterService;
 
 @RestController
-@RequestMapping("/athlete")
-public class AthleteController {
+@RequestMapping("/character")
+public class CharacterController {
 
 	@Autowired
-	private AthleteService athleteService;
+	private CharacterService characterService;
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
-	public Athlete create(Athlete athlete) {
-		return athleteService.save(athlete);
+	public Character create(Character character) {
+		return characterService.save(character);
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Athlete update(Athlete athlete) {
-		return athleteService.update(athlete);
+	public Character update(Character character) {
+		return characterService.update(character);
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Long id) {
-		athleteService.delete(id);
+		characterService.delete(id);
 	}
 	
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
-	public Athlete view(@PathVariable Long id) {
-		return athleteService.findById(id);
+	public Character view(@PathVariable Long id) {
+		return characterService.findById(id);
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<Athlete> list() {
-		return athleteService.findAll();
+	public List<Character> list() {
+		return characterService.findAll();
 	}
 }
