@@ -2,7 +2,7 @@ package edu.uel.proteo.model;
 
 public enum CharacteristicStateType {
 
-	OVERALL,
+	PERCENTAGE,
 	STRENGTH,
 	WEIGHT,
 	VELOCITY,

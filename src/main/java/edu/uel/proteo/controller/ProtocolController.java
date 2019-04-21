@@ -10,47 +10,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.uel.proteo.model.Characteristic;
+import edu.uel.proteo.model.Protocol;
 import edu.uel.proteo.services.CharacteristicService;
-import edu.uel.proteo.services.CharacteristicStateService;
+import edu.uel.proteo.services.ProtocolService;
 
 @RestController
-@RequestMapping("/characteristic")
-public class CharacteristicController {
+@RequestMapping("/protocol")
+public class ProtocolController {
 
+	@Autowired(required = true)
+	private ProtocolService protocolService;
+	
 	@Autowired
 	private CharacteristicService characteristicService;
 	
-	@Autowired
-	private CharacteristicStateService css;
-	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
-	public Characteristic create(@RequestBody Characteristic character) {
-		return characteristicService.save(character);
+	public Protocol create(@RequestBody Protocol protocol) {
+		return protocolService.save(protocol);
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
-	public Characteristic update(@PathVariable Long id, @RequestBody Characteristic character) {
-		return characteristicService.update(character);
+	public Protocol update(@PathVariable Long id, @RequestBody Protocol protocol) {
+		protocolService.findById(id);
+		return protocolService.update(protocol);
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Long id) {
-		characteristicService.delete(id);
+		protocolService.findById(id);
+		protocolService.delete(id);
 	}
 	
 	@RequestMapping(value = "/view/{id}", method = RequestMethod.GET)
-	public Characteristic view(@PathVariable Long id) {
-		return characteristicService.findById(id);
+	public Protocol view(@PathVariable Long id) {
+		return protocolService.findById(id);
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public List<Characteristic> list() {
-		return characteristicService.findAll();
+	public List<Protocol> list() {
+		return protocolService.findAll();
 	}
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.POST)
-	public Characteristic view(@PathVariable Long id, @RequestParam Long stateId) {
-		return characteristicService.add(characteristicService.findById(id), css.findById(stateId));
+	public Protocol view(@PathVariable Long id, @RequestParam Long characteristicId) {
+		return protocolService.add(protocolService.findById(id), characteristicService.findById(characteristicId));
 	}
 }
