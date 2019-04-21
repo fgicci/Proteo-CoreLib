@@ -10,4 +10,5 @@ public interface StdDocumentService<T, I extends Serializable> {
 	T save(T type);
 	T update(T type);
 	void delete(I id);
+	void remove(T type);
 }

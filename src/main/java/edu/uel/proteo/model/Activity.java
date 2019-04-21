@@ -24,19 +24,19 @@ public class Activity extends Record {
 	private Protocol protocol;
 	
 	@ManyToOne(optional = false)
-	@JoinColumn(name = "character_id")
-	private Character character;
+	@JoinColumn(name = "characteristic_id")
+	private Characteristic characteristic;
 	
 	private Double value;
 	private String comments;
 		
 	public Activity() {}
 
-	public Activity(Date issueDate, Athlete athlete, Protocol protocol, Character character, Double value, String comments) {
+	public Activity(Date issueDate, Athlete athlete, Protocol protocol, Characteristic characteristic, Double value, String comments) {
 		this.issueDate = issueDate;
 		this.athlete = athlete;
 		this.protocol = protocol;
-		this.character = character;
+		this.characteristic = characteristic;
 		this.value = value;
 		this.comments = comments;
 	}
@@ -65,12 +65,12 @@ public class Activity extends Record {
 		this.protocol = protocol;
 	}
 
-	public Character getCharacter() {
-		return character;
+	public Characteristic getCharacter() {
+		return characteristic;
 	}
 
-	public void setCharacter(Character character) {
-		this.character = character;
+	public void setCharacter(Characteristic character) {
+		this.characteristic = character;
 	}
 
 	public Double getValue() {

@@ -2,6 +2,8 @@ package edu.uel.proteo.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -10,10 +12,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class Record {
 
 	@Id
@@ -23,14 +30,19 @@ public abstract class Record {
 	@Version
 	private Long version;
 	
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date createDate;
+	@Column(name = "create_date", nullable = false, updatable = false)
+	@CreatedDate
+	@JsonIgnore
+	private Date createDate = new Date();
 	
-	@JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss")
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date updateDate;
+	@Column(name = "update_date", nullable = false)
+	@LastModifiedDate
+	@JsonIgnore
+	private Date updateDate = new Date();
 	
+	@JsonIgnore
 	private Boolean active;
 	
 	public Record() {}
@@ -104,5 +116,11 @@ public abstract class Record {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Record [id=" + id + ", version=" + version + ", createDate=" + createDate + ", updateDate=" + updateDate
+				+ ", active=" + active + "]";
 	}
 }
