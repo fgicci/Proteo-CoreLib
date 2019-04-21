@@ -24,13 +24,15 @@ public class AthleteController {
 		return athleteService.save(athlete);
 	}
 	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public Athlete update(@RequestBody Athlete athlete) {
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
+	public Athlete update(@PathVariable Long id, @RequestBody Athlete athlete) {
+		athleteService.findById(id);
 		return athleteService.update(athlete);
 	}
 	
 	@RequestMapping(value = "/delete/{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Long id) {
+		athleteService.findById(id);
 		athleteService.delete(id);
 	}
 	
