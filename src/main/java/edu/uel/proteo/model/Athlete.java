@@ -65,4 +65,8 @@ public class Athlete extends Record {
 		return "Athlete [firstName=" + firstName + ", lastName=" + lastName + ", birth=" + birth + ", key="
 				+ super.toString() + "]";
 	}
+
+	public String getFullName() {
+		return String.format("%s %s", this.firstName, this.lastName);
+	}
 }
