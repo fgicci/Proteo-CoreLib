@@ -12,12 +12,12 @@ public class StatisticsUtils {
 		return totalAmount / numOfElements;
 	}
 	
-	private static double distance(double a, double b) {
-		return Math.pow((a - b), 2);
+	private static double distance(Double[] optimunValues, Double[] characteristicValues) {
+		return Math.pow((optimunValues - characteristicValues), 2);
 	}
 	
-	public static double euclidianDistance(double a, double b) {
-		return Math.sqrt(distance(a, b));
+	public static double euclidianDistance(Double[] optimunValues, Double[] characteristicValues) {
+		return Math.sqrt(distance(optimunValues, characteristicValues));
 	}
 	
 	public static double euclidianDistance(double[] a, double b[]) {

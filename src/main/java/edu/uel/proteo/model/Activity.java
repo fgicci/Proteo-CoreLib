@@ -65,12 +65,12 @@ public class Activity extends Record {
 		this.protocol = protocol;
 	}
 
-	public Characteristic getCharacter() {
+	public Characteristic getCharacteristic() {
 		return characteristic;
 	}
 
-	public void setCharacter(Characteristic character) {
-		this.characteristic = character;
+	public void setCharacteristic(Characteristic characteristic) {
+		this.characteristic = characteristic;
 	}
 
 	public Double getValue() {
