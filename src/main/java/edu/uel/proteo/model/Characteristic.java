@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -28,6 +29,7 @@ public class Characteristic extends Record {
 	@JoinTable(name = "characteristic_characteristic_state",
 		joinColumns = @JoinColumn(name = "characteristic_id", referencedColumnName = "id", nullable = false, updatable = false),
 		inverseJoinColumns = @JoinColumn(name = "characteristic_state_id", referencedColumnName = "id", nullable = false, updatable = false))
+	@OrderBy("value ASC")
 	private Set<CharacteristicState> states;
 	
 	public Characteristic() {}

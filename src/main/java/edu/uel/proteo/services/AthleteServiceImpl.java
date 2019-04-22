@@ -24,7 +24,6 @@ public class AthleteServiceImpl implements AthleteService {
 	@Autowired
 	private AthleteRepository athleteRepository;
 	
-	
 	@Override
 	@Transactional(readOnly = true)
 	public Athlete findById(Long id) {

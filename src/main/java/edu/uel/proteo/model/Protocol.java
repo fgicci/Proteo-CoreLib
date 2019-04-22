@@ -7,7 +7,11 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -18,15 +22,18 @@ public class Protocol extends Record {
 	private String description;
 	
 	@Enumerated(EnumType.STRING)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private ProtocolType type;
 	
 	@Enumerated(EnumType.STRING)
+	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private Sport sport;
 	
 	@ManyToMany
 	@JoinTable(name = "protocol_characteristic",
 		joinColumns = @JoinColumn(name = "protocol_id", referencedColumnName = "id", nullable = false, updatable = false),
 		inverseJoinColumns = @JoinColumn(name = "characteristic_id", referencedColumnName = "id", nullable = false, updatable = false))
+	@OrderBy("id ASC")
 	private Set<Characteristic> characteristics;
 	
 	public Protocol() {}
@@ -72,11 +79,21 @@ public class Protocol extends Record {
 		this.sport = sport;
 	}
 
-	public Set<Characteristic> getCharacters() {
+	public Set<Characteristic> getCharacteristics() {
 		return characteristics;
 	}
 
-	public void setCharacters(Set<Characteristic> characteristics) {
+	public void setCharacteristics(Set<Characteristic> characteristics) {
 		this.characteristics = characteristics;
+	}
+	
+	public Characteristic addCharacteristic(Characteristic characteristic) {
+		getCharacteristics().add(characteristic);
+		return characteristic;
+	}
+	
+	public Characteristic removeCharacteristic(Characteristic characteristic) {
+		getCharacteristics().remove(characteristic);
+		return characteristic;
 	}
 }
