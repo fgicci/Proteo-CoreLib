@@ -8,6 +8,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,7 +52,7 @@ public class ActivityServiceImpl implements ActivityService {
 			public Predicate toPredicate(Root<Activity> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
 				return cb.equal(root.<Protocol>get(Activity_.protocol), protocol);
 			}
-		});
+		}, new Sort(Sort.Direction.ASC, "characteristic"));
 	}
 	
 	@Override

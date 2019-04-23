@@ -88,4 +88,8 @@ public class Activity extends Record {
 	public void setComments(String comments) {
 		this.comments = comments;
 	}
+	
+	public String getCharacteristicName() {
+		return getCharacteristic().getName();
+	}
 }
