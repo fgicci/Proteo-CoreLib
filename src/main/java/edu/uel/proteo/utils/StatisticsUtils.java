@@ -13,7 +13,9 @@ public class StatisticsUtils {
 	}
 	
 	private static double distance(double a, double b) {
-		return Math.pow((a - b), 2);
+		//se o character b for maior que character A (o valor optimum) eu considero a distancia minima de zero
+		//TODO verificar se pra quando b for maior que a
+		return Math.pow (b > a ? 0 : (a - b), 2);
 	}
 	
 	public static double euclidianDistance(Double a, Double b) {
