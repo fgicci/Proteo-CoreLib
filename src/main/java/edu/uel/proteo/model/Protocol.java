@@ -5,14 +5,13 @@ import java.util.Set;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "protocol")

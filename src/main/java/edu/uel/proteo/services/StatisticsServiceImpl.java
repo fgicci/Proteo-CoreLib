@@ -1,9 +1,10 @@
 package edu.uel.proteo.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,17 +26,36 @@ public class StatisticsServiceImpl implements StatisticsService {
 	@Override
 	public List<PlayerDistanceResult> getDistanceFromAllPlayers(Protocol protocol) {
 		List<PlayerDistanceResult> results = new ArrayList<PlayerDistanceResult>();
-		Double[] optimunValues = protocol.getCharacteristics().stream()
-				.map(Characteristic::getOptimum).collect(Collectors.toSet()).toArray(new Double[protocol.getCharacteristics().size()]);
+		final Double[] optimunValues = protocol.getCharacteristics()
+				.stream()
+				.map(Characteristic::getOptimum)
+				.collect(Collectors.toList())
+				.toArray(new Double[protocol.getCharacteristics().size()]);
+		
 		for (Map.Entry<Athlete, List<Activity>> athleteActivity : activityService.findByProtocol(protocol)
-				.stream().collect(Collectors.groupingBy(Activity::getAthlete)).entrySet()) {
-			Double[] characteristicValues = {};
+				.stream().
+				collect(Collectors.groupingBy(Activity::getAthlete))
+				.entrySet()) {
+			Double[] characteristicValues = athleteActivity.getValue()
+					.stream()
+					.map(Activity::getValue)
+					.collect(Collectors.toList())
+					.toArray(new Double[athleteActivity.getValue().size()]);
+			
 			PlayerDistanceResult playerDistanceResult = new PlayerDistanceResult();
 			playerDistanceResult.setName(athleteActivity.getKey().getFullName());
 			playerDistanceResult.setDistance(StatisticsUtils.euclidianDistance(optimunValues, characteristicValues));
+			playerDistanceResult.setValues(athleteActivity.getValue().stream().collect(Collectors.toMap(Activity::getCharacteristicName, Activity::getValue)));
 			results.add(playerDistanceResult);
 		}
-		return null;
+		
+		Collections.sort(results, new Comparator<PlayerDistanceResult>() {
+			@Override
+			public int compare(PlayerDistanceResult pdr1, PlayerDistanceResult pdr2) {
+				return Double.compare(pdr1.getDistance(), pdr2.getDistance());
+			}
+		});
+		return results;
 	}
 
 }
