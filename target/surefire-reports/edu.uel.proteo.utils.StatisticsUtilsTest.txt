@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: edu.uel.proteo.utils.StatisticsUtilsTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.064 s - in edu.uel.proteo.utils.StatisticsUtilsTest
