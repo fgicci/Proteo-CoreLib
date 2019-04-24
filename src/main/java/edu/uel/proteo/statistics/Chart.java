@@ -1,19 +1,26 @@
 package edu.uel.proteo.statistics;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Chart {
 
 	private String type;
-	private List<String> labels;
-	private List<Dataset> datasets;
+	private ChartData data;
+	private Map<String, Object> options;
 	
-	public Chart() {}
+	public Chart() {
+		this.options = new HashMap<String, Object>() {
+			{
+				put("responsive", new Boolean(true));
+			}
+		};
+	}
 	
-	public Chart(String type, List<String> labels, List<Dataset> datasets) {
+	public Chart(String type, ChartData data) {
+		this();
 		this.type = type;
-		this.labels = labels;
-		this.datasets = datasets;
+		this.data = data;
 	}
 	
 	public String getType() {
@@ -24,19 +31,19 @@ public class Chart {
 		this.type = type;
 	}
 
-	public List<String> getLabels() {
-		return labels;
+	public ChartData getData() {
+		return data;
 	}
-	
-	public void setLabels(List<String> labels) {
-		this.labels = labels;
+
+	public void setData(ChartData data) {
+		this.data = data;
 	}
-	
-	public List<Dataset> getDatasets() {
-		return datasets;
+
+	public Map<String, Object> getOptions() {
+		return options;
 	}
-	
-	public void setDatasets(List<Dataset> datasets) {
-		this.datasets = datasets;
+
+	public void setOptions(Map<String, Object> options) {
+		this.options = options;
 	}
 }

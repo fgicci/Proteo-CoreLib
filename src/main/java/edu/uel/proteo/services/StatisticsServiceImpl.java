@@ -17,6 +17,7 @@ import edu.uel.proteo.model.Characteristic;
 import edu.uel.proteo.model.Protocol;
 import edu.uel.proteo.statistics.PlayerDistanceResult;
 import edu.uel.proteo.statistics.Chart;
+import edu.uel.proteo.statistics.ChartData;
 import edu.uel.proteo.statistics.Dataset;
 import edu.uel.proteo.utils.StatisticsUtils;
 
@@ -63,8 +64,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
 	@Override
 	public Chart getRadarData(Protocol protocol, Athlete athlete) {
-		Chart radarData = new Chart();
-		radarData.setType("radar");
+		ChartData radarData = new ChartData();
 		radarData.setLabels(protocol.getCharacteristics().stream().map(Characteristic::getName).collect(Collectors.toList()));
 		
 		Dataset datasetProtocol = new Dataset();
@@ -84,7 +84,9 @@ public class StatisticsServiceImpl implements StatisticsService {
 		datasets.add(datasetAthlete);
 		
 		radarData.setDatasets(datasets);
-		return radarData;
+		
+		Chart radarChart = new Chart("radar", radarData);
+		return radarChart;
 	}
 
 }
