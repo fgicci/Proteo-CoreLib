@@ -1,6 +1,7 @@
 package edu.uel.proteo.services;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -15,6 +16,9 @@ import edu.uel.proteo.model.Athlete;
 import edu.uel.proteo.model.Characteristic;
 import edu.uel.proteo.model.Protocol;
 import edu.uel.proteo.statistics.PlayerDistanceResult;
+import edu.uel.proteo.statistics.Chart;
+import edu.uel.proteo.statistics.ChartData;
+import edu.uel.proteo.statistics.Dataset;
 import edu.uel.proteo.utils.StatisticsUtils;
 
 @Service
@@ -56,6 +60,33 @@ public class StatisticsServiceImpl implements StatisticsService {
 			}
 		});
 		return results;
+	}
+
+	@Override
+	public Chart getRadarData(Protocol protocol, Athlete athlete) {
+		ChartData radarData = new ChartData();
+		radarData.setLabels(protocol.getCharacteristics().stream().map(Characteristic::getName).collect(Collectors.toList()));
+		
+		Dataset datasetProtocol = new Dataset();
+		datasetProtocol.setLabel(protocol.getName());
+		datasetProtocol.setData(protocol.getCharacteristics().stream().map(Characteristic::getOptimum).collect(Collectors.toList()));
+		datasetProtocol.setBackgroundColor(Arrays.asList("rgba(105, 0, 132, .2)"));
+		datasetProtocol.setBorderColor(Arrays.asList("rgba(105, 0, 132, .2)"));
+		
+		Dataset datasetAthlete = new Dataset();
+		datasetAthlete.setLabel(athlete.getFullName());
+		datasetAthlete.setData(activityService.findByAthlete(athlete).stream().map(Activity::getValue).collect(Collectors.toList()));
+		datasetAthlete.setBackgroundColor(Arrays.asList("rgba(0, 250, 220, .2)"));
+		datasetAthlete.setBorderColor(Arrays.asList("rgba(0, 213, 132, .7)"));
+		
+		List<Dataset> datasets = new ArrayList<Dataset>();
+		datasets.add(datasetProtocol);
+		datasets.add(datasetAthlete);
+		
+		radarData.setDatasets(datasets);
+		
+		Chart radarChart = new Chart("radar", radarData);
+		return radarChart;
 	}
 
 }

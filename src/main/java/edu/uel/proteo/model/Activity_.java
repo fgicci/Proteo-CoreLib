@@ -7,4 +7,5 @@ import javax.persistence.metamodel.StaticMetamodel;
 public class Activity_ extends Record_ {
 	
 	public static volatile SingularAttribute<Activity, Protocol> protocol;
+	public static volatile SingularAttribute<Activity, Athlete> athlete;
 }

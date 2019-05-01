@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.uel.proteo.exception.ResourceNotFoundException;
 import edu.uel.proteo.model.Activity;
 import edu.uel.proteo.model.Activity_;
+import edu.uel.proteo.model.Athlete;
 import edu.uel.proteo.model.Protocol;
 import edu.uel.proteo.repository.ActivityRepository;
 import edu.uel.proteo.utils.RecordUtils;
@@ -55,6 +56,16 @@ public class ActivityServiceImpl implements ActivityService {
 		}, new Sort(Sort.Direction.ASC, "characteristic"));
 	}
 	
+	@Override
+	public List<Activity> findByAthlete(Athlete athlete) {
+		return activityRepository.findAll(new Specification<Activity>() {
+			@Override
+			public Predicate toPredicate(Root<Activity> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+				return cb.equal(root.<Athlete>get(Activity_.athlete), athlete);
+			}
+		}, new Sort(Sort.Direction.ASC, "characteristic"));
+	}
+
 	@Override
 	@Transactional
 	public Activity save(Activity activity) {

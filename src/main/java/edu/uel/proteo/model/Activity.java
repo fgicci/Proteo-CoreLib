@@ -1,4 +1,4 @@
-package edu.uel.proteo.model;
+	package edu.uel.proteo.model;
 
 import java.util.Date;
 
@@ -7,13 +7,26 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 @Table(name = "activity")
 public class Activity extends Record {
 
 	@Column(name = "issue_date")
+	@JsonFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@Temporal(TemporalType.DATE)
 	private Date issueDate;
+	
+	@ManyToOne(optional = false)
+	@JoinColumn(name = "trial_id")
+	private Trial trial;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "athlete_id")
