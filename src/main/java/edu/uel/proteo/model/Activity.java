@@ -1,4 +1,4 @@
-package edu.uel.proteo.model;
+	package edu.uel.proteo.model;
 
 import java.util.Date;
 

@@ -8,5 +8,6 @@ public enum CharacteristicStateType {
 	VELOCITY,
 	AGILITY,
 	INTELLIGENCE,
-	RESILIENCE
+	RESILIENCE,
+	QUANTITY
 }
