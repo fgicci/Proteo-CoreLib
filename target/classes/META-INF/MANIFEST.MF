@@ -1,6 +1,8 @@
 Manifest-Version: 1.0
-Built-By: user
-Build-Jdk: 9.0.1
+Implementation-Title: Proteo-CoreLib
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: fergicci
+Implementation-Vendor-Id: edu.uel.proteo
 Class-Path: spring-boot-starter-web-2.0.5.RELEASE.jar spring-boot-star
  ter-2.0.5.RELEASE.jar spring-boot-2.0.5.RELEASE.jar spring-boot-autoc
  onfigure-2.0.5.RELEASE.jar spring-boot-starter-logging-2.0.5.RELEASE.
@@ -27,11 +29,9 @@ Class-Path: spring-boot-starter-web-2.0.5.RELEASE.jar spring-boot-star
   spring-tx-5.0.9.RELEASE.jar slf4j-api-1.7.25.jar spring-aspects-5.0.
  9.RELEASE.jar mysql-connector-java-5.1.47.jar h2-1.4.197.jar spring-c
  ore-5.0.9.RELEASE.jar spring-jcl-5.0.9.RELEASE.jar
-Implementation-Title: Proteo-CoreLib
-Implementation-Version: 0.0.1-SNAPSHOT
-Implementation-Vendor-Id: edu.uel.proteo
+Build-Jdk: 1.8.0_121
 Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
  ot-starter-parent/corelib
-Main-Class: edu.uel.proteo.ServiceApplication
 Created-By: Maven Integration for Eclipse
+Main-Class: edu.uel.proteo.ServiceApplication
 

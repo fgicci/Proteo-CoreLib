@@ -12,6 +12,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "protocol")
@@ -28,6 +29,10 @@ public class Protocol extends Record {
 	@JsonFormat(shape = JsonFormat.Shape.STRING)
 	private Sport sport;
 	
+	@ManyToMany(mappedBy = "protocols")
+	@JsonIgnore
+	private Set<Trial> trials;
+	
 	@ManyToMany
 	@JoinTable(name = "protocol_characteristic",
 		joinColumns = @JoinColumn(name = "protocol_id", referencedColumnName = "id", nullable = false, updatable = false),
@@ -37,12 +42,13 @@ public class Protocol extends Record {
 	
 	public Protocol() {}
 
-	public Protocol(String name, String description, ProtocolType type, Sport sport, Set<Characteristic> characteristics) {
+	public Protocol(String name, String description, ProtocolType type, Sport sport, Set<Characteristic> characteristics, Set<Trial> trials) {
 		super();
 		this.name = name;
 		this.description = description;
 		this.type = type;
 		this.sport = sport;
+		this.trials = trials;
 		this.characteristics = characteristics;
 	}
 
@@ -76,6 +82,14 @@ public class Protocol extends Record {
 
 	public void setSport(Sport sport) {
 		this.sport = sport;
+	}
+
+	public Set<Trial> getTrials() {
+		return trials;
+	}
+
+	public void setTrials(Set<Trial> trials) {
+		this.trials = trials;
 	}
 
 	public Set<Characteristic> getCharacteristics() {
