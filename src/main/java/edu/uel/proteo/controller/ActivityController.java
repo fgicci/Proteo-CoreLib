@@ -21,7 +21,7 @@ public class ActivityController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
 	public Activity create(@RequestBody Activity activity) {
-		return activityService.save(activity);
+		return activityService.create(activity);
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
@@ -43,6 +43,6 @@ public class ActivityController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Activity> list() {
-		return activityService.findAll();
+		return activityService.findAll(0, 20);
 	}
 }

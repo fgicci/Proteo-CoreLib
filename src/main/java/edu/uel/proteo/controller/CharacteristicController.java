@@ -26,7 +26,7 @@ public class CharacteristicController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
 	public Characteristic create(@RequestBody Characteristic character) {
-		return characteristicService.save(character);
+		return characteristicService.create(character);
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
@@ -46,7 +46,7 @@ public class CharacteristicController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Characteristic> list() {
-		return characteristicService.findAll();
+		return characteristicService.findAll(0, 10);
 	}
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.POST)

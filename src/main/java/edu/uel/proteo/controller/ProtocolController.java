@@ -26,7 +26,7 @@ public class ProtocolController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
 	public Protocol create(@RequestBody Protocol protocol) {
-		return protocolService.save(protocol);
+		return protocolService.create(protocol);
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
@@ -48,7 +48,7 @@ public class ProtocolController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Protocol> list() {
-		return protocolService.findAll();
+		return protocolService.findAll(0, 10);
 	}
 	
 	@RequestMapping(value = "/add/{id}", method = RequestMethod.POST)

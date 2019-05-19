@@ -21,7 +21,7 @@ public class AthleteController {
 	
 	@RequestMapping(value = "/create", method = RequestMethod.PUT)
 	public Athlete create(@RequestBody Athlete athlete) {
-		return athleteService.save(athlete);
+		return athleteService.create(athlete);
 	}
 	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.POST)
@@ -43,6 +43,6 @@ public class AthleteController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public List<Athlete> list() {
-		return athleteService.findAll();
+		return athleteService.findAll(0, 10);
 	}
 }

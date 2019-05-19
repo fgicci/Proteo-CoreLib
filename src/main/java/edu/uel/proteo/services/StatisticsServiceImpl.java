@@ -25,7 +25,7 @@ import edu.uel.proteo.utils.StatisticsUtils;
 public class StatisticsServiceImpl implements StatisticsService {
 
 	@Autowired
-	private ActivityService activityService;
+	ActivityService activityService;
 	
 	@Override
 	public List<PlayerDistanceResult> getDistanceFromAllPlayers(Protocol protocol) {

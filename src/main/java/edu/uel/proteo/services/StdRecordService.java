@@ -3,12 +3,12 @@ package edu.uel.proteo.services;
 import java.io.Serializable;
 import java.util.List;
 
-public interface StdRecordService<E, K extends Serializable> {
+public abstract interface StdRecordService<T, ID extends Serializable> {
 
-	E findById(K key);
-	List<E> findAll();
-	E save(E entity);
-	E update(E entity);
-	void delete(K key);
-	void remove(E entity);
+	T findById(ID id);
+	List<T> findAll(Integer pageNumber, Integer limit);
+	T create(T entity);
+	T update(T entity);
+	void delete(ID id);
+	void remove(T entity);
 }
