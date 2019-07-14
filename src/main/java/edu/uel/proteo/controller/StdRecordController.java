@@ -26,7 +26,7 @@ public class StdRecordController<T extends Record, ID extends Serializable> {
 
 	@GetMapping("/list")
 	public List<T> getList(@RequestParam Integer pageNumber, @RequestParam Integer limit) {
-		return service.findAll(pageNumber, limit);
+		return service.findAll((pageNumber - 1), limit);
 	}
 	
 	@GetMapping("/view/{id}")
