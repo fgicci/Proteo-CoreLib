@@ -52,7 +52,7 @@ public abstract class StdRecordServiceImpl<T extends Record, ID extends Serializ
 
 	@Override
 	public T create(T type) {
-		if (repository.existsById(((ID) type.getId())))
+		if ((ID) type.getId() != null && repository.existsById((ID) type.getId()))
 			throw new RecordExistsException(className, ID_FIELD, String.valueOf(type.getId()));
 		type.setCreateDate(new Date());
 		type.setUpdateDate(new Date());
