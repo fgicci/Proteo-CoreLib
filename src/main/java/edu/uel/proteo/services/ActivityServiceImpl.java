@@ -26,7 +26,7 @@ public class ActivityServiceImpl extends StdRecordServiceImpl<Activity, Long> im
 	
 	@Autowired
 	public ActivityServiceImpl(ActivityRepository activityRepository) {
-		super(activityRepository);
+		super(activityRepository, Activity.class);
 		this.activityRepository = activityRepository;
 	}
 

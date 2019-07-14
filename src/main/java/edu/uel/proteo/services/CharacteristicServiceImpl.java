@@ -21,7 +21,7 @@ public class CharacteristicServiceImpl extends StdRecordServiceImpl<Characterist
 	
 	@Autowired
 	public CharacteristicServiceImpl(CharacteristicRepository characteristicRepository) {
-		super(characteristicRepository);
+		super(characteristicRepository, Characteristic.class);
 		this.characteristicRepository = characteristicRepository;
 	}
 

@@ -11,7 +11,7 @@ public class CharacteristicStateServiceImpl extends StdRecordServiceImpl<Charact
 
 	@Autowired
 	public CharacteristicStateServiceImpl(CharacteristicStateRepository characteristicStateRepository) {
-		super(characteristicStateRepository);
+		super(characteristicStateRepository, CharacteristicState.class);
 	}
 
 	

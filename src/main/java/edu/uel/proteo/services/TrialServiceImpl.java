@@ -11,6 +11,6 @@ public class TrialServiceImpl extends StdRecordServiceImpl<Trial, Long> implemen
 
 	@Autowired
 	public TrialServiceImpl(TrialRepository trialRepository) {
-		super(trialRepository);
+		super(trialRepository, Trial.class);
 	}
 }

@@ -16,7 +16,7 @@ public class ProtocolServiceImpl extends StdRecordServiceImpl<Protocol, Long> im
 	
 	@Autowired 
 	public ProtocolServiceImpl(ProtocolRepository protocolRepository) {
-		super(protocolRepository);
+		super(protocolRepository, Protocol.class);
 		this.protocolRepository = protocolRepository;
 	}
 

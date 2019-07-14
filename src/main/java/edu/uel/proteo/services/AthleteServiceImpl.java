@@ -13,7 +13,7 @@ public class AthleteServiceImpl extends StdRecordServiceImpl<Athlete, Long> impl
 	
 	@Autowired
 	public AthleteServiceImpl(AthleteRepository athleteReposirory) {
-		super(athleteReposirory);
+		super(athleteReposirory, Athlete.class);
 		this.athleteReposirory = athleteReposirory;
 	}
 }
