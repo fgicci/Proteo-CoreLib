@@ -12,9 +12,15 @@ public class StatisticsUtils {
 		return totalAmount / numOfElements;
 	}
 	
+	/**
+	 * Returns the distance between two values.
+	 * 
+	 * @param a protocol optimum value.
+	 * @param b athlete activity value logged.
+	 * @return power of the difference between a and b, if the b is greater then a it will be
+	 * considered the minimum distance of zero.
+	 */
 	private static double distance(double a, double b) {
-		//se o character b for maior que character A (o valor optimum) eu considero a distancia minima de zero
-		//TODO verificar se pra quando b for maior que a
 		return Math.pow (b > a ? 0 : (a - b), 2);
 	}
 	
